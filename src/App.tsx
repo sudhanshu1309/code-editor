@@ -54,7 +54,7 @@ const App: FunctionComponent<AppProps> = () => {
         }}
       >
         <Container
-          maxWidth="lg"
+          maxWidth="xl"
           sx={{
             pt: 20,
             color: "#fff",

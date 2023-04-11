@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import "@fontsource/jetbrains-mono";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Editor from "./editor/Editor";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/editor",
-    element: <div>Hello world!</div>,
+    element: <Editor />,
   },
 ]);
 
