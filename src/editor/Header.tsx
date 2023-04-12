@@ -1,24 +1,11 @@
-import {
-  Box,
-  Stack,
-  Typography,
-  Container,
-  Divider,
-  SelectChangeEvent,
-} from "@mui/material";
-import { FunctionComponent, useState } from "react";
+import { Box, Stack, Typography, Divider } from "@mui/material";
+import { FunctionComponent } from "react";
 import darkMode from "../assets/darkMode.svg";
-import lightMode from "../assets/lightMode.svg";
+// import lightMode from "../assets/lightMode.svg";
 
-interface HeaderProps {
-  mode: string;
-  handleChange: any;
-}
+interface HeaderProps {}
 
-const Header: FunctionComponent<HeaderProps> = ({
-  mode,
-  handleChange,
-}: HeaderProps) => {
+const Header: FunctionComponent<HeaderProps> = () => {
   return (
     <>
       <Stack direction={"row"} justifyContent={"space-between"} px={6} py={2}>
@@ -35,10 +22,9 @@ const Header: FunctionComponent<HeaderProps> = ({
               height: "24px",
               objectFit: "contain",
             }}
-            onClick={handleChange}
           >
             <img
-              src={mode === "dark" ? lightMode : darkMode}
+              src={darkMode}
               alt=""
               width={"24px"}
               height={"24px"}
@@ -49,11 +35,7 @@ const Header: FunctionComponent<HeaderProps> = ({
           </Box>
         </Stack>
       </Stack>
-      <Divider
-        sx={{
-          borderColor: mode === "dark" ? "#fff" : null,
-        }}
-      />
+      <Divider />
     </>
   );
 };

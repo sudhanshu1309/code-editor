@@ -11,27 +11,9 @@ import {
 import { FunctionComponent, useState } from "react";
 import languageOptions from "./languageOptions";
 
-interface LanguageSelectorProps {
-  mode: string;
-}
+interface LanguageSelectorProps {}
 
-// const styles = (theme: any) => ({
-//   select: {
-//     "&:before": {
-//       borderColor: '#fff',
-//     },
-//     "&:after": {
-//       borderColor: '#fff',
-//     },
-//   },
-//   icon: {
-//     fill: '#fff',
-//   },
-// });
-
-const LanguageSelector: FunctionComponent<LanguageSelectorProps> = ({
-  mode,
-}: LanguageSelectorProps) => {
+const LanguageSelector: FunctionComponent<LanguageSelectorProps> = () => {
   const [lang, setLang] = useState("nodejs");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -46,44 +28,10 @@ const LanguageSelector: FunctionComponent<LanguageSelectorProps> = ({
           py: 2,
         }}
       >
-        <Stack
-          direction={"row"}
-          columnGap={2}
-          sx={{
-            color: mode === "dark" ? "#fff" : "#000",
-          }}
-        >
+        <Stack direction={"row"} columnGap={2}>
           <FormControl sx={{ minWidth: 150 }}>
-            <InputLabel
-              id="demo-simple-select-label"
-              sx={{
-                color: mode === "dark" ? "#fff" : "#000",
-              }}
-            >
-              Language
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={lang}
-              label="Language"
-              onChange={handleChange}
-              sx={{
-                color: mode === "dark" ? "#fff" : "#000",
-                ".MuiOutlinedInput-notchedOutline": {
-                  borderColor: mode === "dark" ? "#fff" : "#000",
-                },
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: mode === "dark" ? "#fff" : "#000",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: mode === "dark" ? "#fff" : "#000",
-                },
-                ".MuiSvgIcon-root ": {
-                  fill: "white !important",
-                },
-              }}
-            >
+            <InputLabel>Language</InputLabel>
+            <Select value={lang} label="Language" onChange={handleChange}>
               {languageOptions.map((l, index) => {
                 return (
                   <MenuItem key={index} value={l.id}>
@@ -93,33 +41,27 @@ const LanguageSelector: FunctionComponent<LanguageSelectorProps> = ({
               })}
             </Select>
           </FormControl>
-          {/* <FormControl sx={{ minWidth: 150 }}>
-            <InputLabel id="demo-simple-select-label">Version</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={lang}
-              label="Version"
-              onChange={handleChange}
-            >
-              {languageOptions.map((l, index) => {
-                return (
-                  <MenuItem key={index} value={l.id}>
-                    {l.versions}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl> */}
         </Stack>
       </Box>
-      <Divider
-        sx={{
-          borderColor: mode === "dark" ? "#fff" : null,
-        }}
-      />
+      <Divider />
     </>
   );
 };
 
 export default LanguageSelector;
+
+//   sx={{
+//     color: "#fff",
+//     ".MuiOutlinedInput-notchedOutline": {
+//       borderColor: "#fff",
+//     },
+//     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+//       borderColor: "#fff",
+//     },
+//     "&:hover .MuiOutlinedInput-notchedOutline": {
+//       borderColor: "#fff",
+//     },
+//     ".MuiSvgIcon-root ": {
+//       fill: "white !important",
+//     },
+//   }}

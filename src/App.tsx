@@ -115,7 +115,7 @@ const App: FunctionComponent<AppProps> = () => {
             <StyledButton
               variant="contained"
               onClick={() => {
-                navigate("/editor", { replace: true });
+                navigate("/editor", { replace: false });
               }}
             >
               Continue without login

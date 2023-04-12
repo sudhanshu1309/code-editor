@@ -8,7 +8,7 @@ import Editor from "./editor/Editor";
 
 const router = createBrowserRouter([
   {
-    path: "/", // The path to match
+    path: "/",
     element: <App />,
   },
   {
