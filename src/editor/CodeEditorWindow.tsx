@@ -5,19 +5,17 @@ import { FunctionComponent, useState } from "react";
 interface CodeEditorWindowProps {
   lang: string;
   code: string;
-  onChange: (key: any, value: any) => void;
+  onChange: (val: string) => void;
 }
 
 const CodeEditorWindow: FunctionComponent<CodeEditorWindowProps> = ({
-  onChange,
   lang,
   code,
+  onChange,
 }) => {
-  const [value, setValue] = useState("");
-
-  const handleEditorChange = (value: string) => {
-    setValue(value);
-    onChange("code", value);
+  const handleEditorChange = (value: any, event: any) => {
+    console.log(value);
+    onChange(value);
   };
 
   return (

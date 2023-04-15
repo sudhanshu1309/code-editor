@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { FunctionComponent, SetStateAction, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import Header from "./Header";
 import LanguageSelector from "./LanguageSelector";
 import EditorWindow from "./CodeEditorWindow";
@@ -22,16 +22,8 @@ const Editor: FunctionComponent<EditorProps> = () => {
     setLang(event.target.value);
   };
 
-  const onChange = (action: any, data: SetStateAction<string>) => {
-    switch (action) {
-      case "code": {
-        setCode(data);
-        break;
-      }
-      default: {
-        console.warn("case not handled!", action, data);
-      }
-    }
+  const onChange = (data: string) => {
+    setCode(data);
   };
 
   const body = {
@@ -56,7 +48,6 @@ const Editor: FunctionComponent<EditorProps> = () => {
         }
       );
       const data = await res.json();
-      console.log(data.output); // Need to delete this
       setOutput(data.output);
     } catch (error) {
       console.log(error);
