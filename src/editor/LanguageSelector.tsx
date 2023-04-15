@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   FormControl,
   InputLabel,
@@ -8,18 +9,20 @@ import {
   SelectChangeEvent,
   Stack,
 } from "@mui/material";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import languageOptions from "./languageOptions";
 
-interface LanguageSelectorProps {}
+interface LanguageSelectorProps {
+  lang: string;
+  handleChange: (e: SelectChangeEvent) => void;
+  handleClick: () => void;
+}
 
-const LanguageSelector: FunctionComponent<LanguageSelectorProps> = () => {
-  const [lang, setLang] = useState("nodejs");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setLang(event.target.value);
-  };
-
+const LanguageSelector: FunctionComponent<LanguageSelectorProps> = ({
+  lang,
+  handleChange,
+  handleClick,
+}: LanguageSelectorProps) => {
   return (
     <>
       <Box
@@ -41,6 +44,9 @@ const LanguageSelector: FunctionComponent<LanguageSelectorProps> = () => {
               })}
             </Select>
           </FormControl>
+          <Button variant="outlined" onClick={handleClick}>
+            Run
+          </Button>
         </Stack>
       </Box>
       <Divider />

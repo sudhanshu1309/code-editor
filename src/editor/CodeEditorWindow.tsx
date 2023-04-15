@@ -2,10 +2,23 @@ import CodeEditor from "@monaco-editor/react";
 import { Box } from "@mui/material";
 import { FunctionComponent, useState } from "react";
 
-interface CodeEditorWindowProps {}
+interface CodeEditorWindowProps {
+  lang: string;
+  code: string;
+  onChange: (key: any, value: any) => void;
+}
 
-const CodeEditorWindow: FunctionComponent<CodeEditorWindowProps> = () => {
-  const [code, setCode] = useState("");
+const CodeEditorWindow: FunctionComponent<CodeEditorWindowProps> = ({
+  onChange,
+  lang,
+  code,
+}) => {
+  const [value, setValue] = useState("");
+
+  const handleEditorChange = (value: string) => {
+    setValue(value);
+    onChange("code", value);
+  };
 
   return (
     <>
@@ -18,11 +31,11 @@ const CodeEditorWindow: FunctionComponent<CodeEditorWindowProps> = () => {
         <CodeEditor
           height="85vh"
           width={`100%`}
-          language={"javascript"}
+          language={lang}
           value={code}
           // theme={theme}
-          defaultValue="// type your code..."
-          // onChange={handleEditorChange}
+          defaultValue="// type your code here..."
+          onChange={handleEditorChange}
         />
       </Box>
     </>
